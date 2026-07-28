@@ -80,3 +80,24 @@
 #include <string>
 using namespace std;
 
+
+// Function prototypes
+void displayMenu();
+void addTask(vector<string>& tasks);
+void viewTasks(const vector<string>& tasks);
+void deleteTask(vector<string>& tasks);
+
+int main() {
+    vector<string> tasks;
+    int choice;
+
+    do {
+        displayMenu();
+        cin >> choice;
+
+        // Handle non-numeric input gracefully
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid input. Please enter a number." << endl;
+            continue;
