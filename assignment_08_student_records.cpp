@@ -83,3 +83,91 @@
 #include <iomanip>
 using namespace std;
 
+
+// Struct representing a single student record
+struct Student {
+    string name;
+    int id;
+    vector<double> scores;
+};
+
+// Function prototypes
+void displayMenu();
+void addStudent(vector<Student>& students);
+void displayAllStudents(const vector<Student>& students);
+void calculateAverageForStudent(const vector<Student>& students);
+double calculateAverage(const vector<double>& scores);
+
+int main() {
+    vector<Student> students;
+    int choice;
+
+    do {
+        displayMenu();
+        cin >> choice;
+
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid input. Please enter a number." << endl;
+            continue;
+        }
+
+        switch (choice) {
+            case 1:
+                addStudent(students);
+                break;
+            case 2:
+                displayAllStudents(students);
+                break;
+            case 3:
+                calculateAverageForStudent(students);
+                break;
+            case 4:
+                cout << "Goodbye!" << endl;
+                break;
+            default:
+                cout << "Invalid choice. Please enter a number between 1 and 4." << endl;
+        }
+
+        cout << endl;
+
+    } while (choice != 4);
+
+    return 0;
+}
+
+// Displays the main menu
+void displayMenu() {
+    cout << "================================" << endl;
+    cout << "   STUDENT RECORD SYSTEM MENU" << endl;
+    cout << "================================" << endl;
+    cout << "1. Add student" << endl;
+    cout << "2. Display all students" << endl;
+    cout << "3. Calculate average score" << endl;
+    cout << "4. Quit" << endl;
+    cout << "Enter your choice (1-4): ";
+}
+
+// Prompts the user for student details and adds a new record
+void addStudent(vector<Student>& students) {
+    Student s;
+
+    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // clear leftover newline
+
+    cout << "Student name: ";
+    getline(cin, s.name);
+
+    cout << "Student ID: ";
+    cin >> s.id;
+
+    int numScores;
+    cout << "How many scores? ";
+    cin >> numScores;
+
+    if (numScores <= 0) {
+        cout << "Error: Number of scores must be positive. Student not added." << endl;
+        return;
+    }
+
+    for (int i =
