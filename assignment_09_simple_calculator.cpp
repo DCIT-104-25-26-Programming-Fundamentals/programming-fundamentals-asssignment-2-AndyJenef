@@ -73,3 +73,25 @@
 #include <cmath>
 using namespace std;
 
+
+// Function prototypes
+void displayMenu();
+double add(double a, double b);
+double subtract(double a, double b);
+double multiply(double a, double b);
+bool divide(double a, double b, double& result);
+bool modulus(double a, double b, double& result);
+double exponent(double base, double exp);
+void getTwoNumbers(double& a, double& b);
+
+int main() {
+    int choice;
+
+    do {
+        displayMenu();
+        cin >> choice;
+
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid input. Please enter a number."
