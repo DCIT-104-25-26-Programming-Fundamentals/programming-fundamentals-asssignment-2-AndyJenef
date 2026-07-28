@@ -65,3 +65,42 @@
 #include <string>
 using namespace std;
 
+
+const int MAX_SIZE = 10;
+
+// Function prototypes
+void readMatrix(int matrix[MAX_SIZE][MAX_SIZE], int rows, int cols);
+void printMatrix(int matrix[MAX_SIZE][MAX_SIZE], int rows, int cols);
+void transposeMatrix(int matrix[MAX_SIZE][MAX_SIZE], int result[MAX_SIZE][MAX_SIZE], int rows, int cols);
+void addMatrices(int a[MAX_SIZE][MAX_SIZE], int b[MAX_SIZE][MAX_SIZE], int result[MAX_SIZE][MAX_SIZE], int rows, int cols);
+void multiplyMatrices(int a[MAX_SIZE][MAX_SIZE], int b[MAX_SIZE][MAX_SIZE], int result[MAX_SIZE][MAX_SIZE], int m, int n, int p);
+
+int main() {
+    int matrix[MAX_SIZE][MAX_SIZE];
+    int result[MAX_SIZE][MAX_SIZE];
+    int rows, cols;
+
+    // ---------------------------------------------------------------
+    // PART A — Transpose
+    // ---------------------------------------------------------------
+    cout << "===== PART A: Transpose a Matrix =====" << endl;
+    cout << "Enter number of rows: ";
+    cin >> rows;
+    cout << "Enter number of columns: ";
+    cin >> cols;
+
+    readMatrix(matrix, rows, cols);
+
+    cout << "\nOriginal Matrix:" << endl;
+    printMatrix(matrix, rows, cols);
+
+    transposeMatrix(matrix, result, rows, cols);
+
+    cout << "\nTransposed Matrix:" << endl;
+    printMatrix(result, cols, rows);
+
+    // ---------------------------------------------------------------
+    // PART B — Addition
+    // ---------------------------------------------------------------
+    cout << "\n===== PART B: Add Two Matrices =====" << endl;
+    int matrixA
